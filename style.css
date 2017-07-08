@@ -1,0 +1,15 @@
+body {
+	display: grid;
+	grid-template-rows: auto 1fr auto;
+	min-height: 100vh;
+	margin: 0;
+}
+
+body > header {
+	text-align: center;
+}
+
+body > footer {
+	text-align: center;
+	padding-bottom: 2em;
+}

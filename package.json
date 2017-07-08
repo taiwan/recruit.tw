@@ -1,9 +1,10 @@
 {
   "name": "recruit.tw",
   "version": "1.0.0",
-  "description": "community jobs site",
+  "description": "Another jobs site for community of developers in Taiwan",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -17,6 +18,7 @@
   },
   "homepage": "https://github.com/taiwan/recruit.tw#readme",
   "dependencies": {
+    "dotenv": "^4.0.0",
     "postgraphql": "^3.2.0"
   }
 }
