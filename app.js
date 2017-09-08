@@ -1,12 +1,10 @@
 import {hyper, Component} from 'hyperhtml';
+import JobsList from './views/JobsList.js';
 
-class Clock extends Component {
-	get defaultState() { return {status: 'Under construction'}; }
-	render() {
-		return this.html`
-			<p style="text-align: center">It is ${this.state.status}.</p>
-		`;
-	}
-}
-
-hyper(document.querySelector('main'))`${new Clock}`;
+document.addEventListener("DOMContentLoaded", function() {
+	hyper(document.querySelector('main'))`${[
+		JobsList({title: 'F2E', org: 'f2etw', color: '#E44D26'}),
+		JobsList({title: 'NodeJS', org: 'nodejs-tw', color: '#43853d'}),
+		JobsList({title: 'Golang', org: 'golangtw', color: '#375EAB'})
+	]}`;
+});

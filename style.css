@@ -1,6 +1,7 @@
 body {
 	display: grid;
 	grid-template-rows: auto 1fr auto;
+	grid-template-columns: 100%;
 	min-height: 100vh;
 	margin: 0;
 }
@@ -9,7 +10,54 @@ body > header {
 	text-align: center;
 }
 
+main {
+	max-width: 1280px;
+	margin: 0 auto;
+	width: 100%;
+}
+
+@media (min-width: 960px) {
+	main {
+		display: flex;
+	}
+}
+
+main section {
+	flex: 1;
+	padding: 0 1em;
+}
+
+main section > header {
+	background-color: var(--color, #3bb225);
+	text-align: center;
+	position: sticky;
+	top: 0;
+}
+
+main section header a {
+	color: white;
+}
+
+ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+}
+
+.job:hover header {
+	color: var(--color);
+}
+
+.job footer {
+	text-align: right;
+}
+
 body > footer {
 	text-align: center;
-	padding-bottom: 2em;
+	padding: 2em 0;
 }
