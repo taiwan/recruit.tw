@@ -1,11 +1,15 @@
-import {hyper, Component} from 'hyperhtml';
+import {Component} from './hyperhtml.js';
 import JobsList from './views/JobsList.js';
 
-document.addEventListener("DOMContentLoaded", function() {
-	hyper(document.querySelector('main'))`${[
-		JobsList({title: 'F2E', org: 'f2etw', color: '#E44D26'}),
-		JobsList({title: 'NodeJS', org: 'nodejs-tw', color: '#43853d'}),
-		JobsList({title: 'Golang', org: 'golangtw', color: '#375EAB'}),
-		JobsList({title: 'Java', org: 'twjug', color: '#51D5B6'})
-	]}`;
-});
+const groups = [
+	{title: 'F2E', org: 'f2etw', color: '#E44D26'},
+	{title: 'NodeJS', org: 'nodejs-tw', color: '#43853d'},
+	{title: 'Golang', org: 'golangtw', color: '#375EAB'},
+	{title: 'Java', org: 'twjug', color: '#51D5B6'}
+];
+
+export default class App extends Component {
+    render() {
+        return this.html`${groups.map(group => JobsList.for(groups, group.org).render(group))}`;
+    }
+}
