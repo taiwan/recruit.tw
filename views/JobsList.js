@@ -1,13 +1,14 @@
 import {wire, Component} from '../hyperhtml.js';
 import Job from './Job.js';
 
-const fetchList = org => {
-	return fetch(`https://api.github.com/repos/${org}/jobs/issues`).then(response => response.json())
+const fetchList = repo => {
+	return fetch(`https://api.github.com/repos/${repo}/issues`).then(response => response.json())
 }
 
 export default class JobsList extends Component {
 	render(props) {
-		const link = `https://github.com/${props.org}/jobs/issues`;
+		const repo = props.repo ? props.repo : `${props.org}/jobs`;
+		const link = `https://github.com/${repo}/issues`;
 		const style = `--color: ${props.color}`;
 		return this.html`
 	 	<section class=${props.org} style=${style}>
@@ -17,7 +18,7 @@ export default class JobsList extends Component {
 				</a>
 			</header>
 			${{
-				any: fetchList(props.org).then(jobs => wire(jobs)`
+				any: fetchList(repo).then(jobs => wire(jobs)`
 					<ul>${jobs.map(job =>
 						wire(job, ':item')`<li>
 							<a href=${job.html_url}>
